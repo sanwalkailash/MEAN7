@@ -3,16 +3,30 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { AppRoutingModule } from './/app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { RestfulService } from './services/restful.service';
+import { UtilService } from './services/util.service';
+import { TokeninterceptorService } from './services/tokeninterceptor.service';
+import { HttpClientModule }    from '@angular/common/http';
+import { ErrordialogComponent } from './errordialog/errordialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent,
+    ErrordialogComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [RestfulService, UtilService, TokeninterceptorService]
 })
 export class AppModule { }

@@ -1,5 +1,10 @@
 # Remittance7
 
+create new service and include in provider 
+ ng g s services/restful --module=app
+create new route and import in module 
+ ng generate module app-routing --flat --module=app
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
