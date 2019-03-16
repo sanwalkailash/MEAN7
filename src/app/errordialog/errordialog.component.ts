@@ -15,4 +15,3 @@ export class ErrordialogComponent implements OnInit {
   }
 
 }
-https://github.com/sanwalkailash/MEAN7.git
