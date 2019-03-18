@@ -1,0 +1,26 @@
+{
+    "login": {
+        "SignIn": "Sign In",
+        "SignInMsg": "Please enter your username and password to login",
+        "UserName": "Username",
+        "UserNameMsg": "Please enter your username",
+        "Password": "Password",
+        "PasswordMsg": "Please enter your password",
+        "Submit": "Submit",
+        "RememberMe": "Rememer Me"
+    },
+    "footer": {
+        "Privacy": "Privacy",
+        "Copyrights": "@2017,Powered by"
+    },
+    "messages": {
+        "1": "Oops! Something is not right",
+        "2": "Welcome...",
+        "4":"Updating ..."
+    },
+    "errors":{
+        "0":{"code":0, "message":"Loading...","image":""},
+        "3":{"code":3, "message":"Please check your Internet Connection !","image":"../assets/images/error.png"},
+        "4":{"code":4, "message":"Oops! something is not right.","image":"../assets/images/error.png"}
+    }
+}

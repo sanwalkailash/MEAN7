@@ -9,7 +9,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 
-import {Observable, throwError} from 'rxjs';
+import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 @Injectable()
@@ -46,7 +46,7 @@ export class TokeninterceptorService implements HttpInterceptor {
           status: error.status
         };
         this.errorDialogService.openDialog(data);
-        return throwError(error);
+        return Observable.throw(error);
       }));
   }
 }

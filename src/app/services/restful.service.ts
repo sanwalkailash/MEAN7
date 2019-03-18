@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
-@Injectable(@Injectable({
-  providedIn: 'root',
-}))
+@Injectable({
+  providedIn: 'root'
+})
 
 export class RestfulService {
 
   constructor(private http: HttpClient) {
   }
+
   api_GET(perameterjson, apiPath) {
     console.log('perameter json for get call is ', perameterjson);
     let url = environment.API_HOST;
@@ -22,7 +24,7 @@ export class RestfulService {
         return Observable.throw('api path not added.');
     }
     console.log('called api [' + url + ']');
-    return http.get(url)
+    return this.http.get(url)
       .catch((error: Response) => Observable.throw(error || 'Server error'));
   }
 
@@ -39,7 +41,7 @@ export class RestfulService {
         return Observable.throw('api path not added.');
     }
     console.log('called api [' + url + ']');
-    return http.delete(url)
+    return this.http.delete(url)
       .catch((error: Response) => Observable.throw(error || 'Server error'));
   }
 
@@ -56,11 +58,14 @@ export class RestfulService {
         return Observable.throw('api path not added.');
     }
     console.log('called api [' + url + ']');
-    return http.put(url, data)
+    return this.http.put(url, data)
       .catch((error: Response) => Observable.throw(error || 'Server error'));
   }
 
   api_POST(data, apiPath) {
+
+
+
     console.log('post data ', data);
     console.log('post apiPath ', apiPath);
     let url = environment.API_HOST;
@@ -73,7 +78,7 @@ export class RestfulService {
         return Observable.throw('api path not added.');
     }
     console.log('called api [' + url + ']');
-    return http.post(url, data)
+    return this.http.post(url, data)
       .catch((error: Response) => Observable.throw(error || 'Server error'));
   }
 

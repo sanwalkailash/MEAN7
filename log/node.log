@@ -1,0 +1,6 @@
+[2019-03-18T15:03:44.988] [INFO] [access] - ENV is :: undefined
+[2019-03-18T15:03:44.991] [INFO] [access] - PORT :: undefined, using defaults
+[2019-03-18T15:03:45.080] [INFO] [access] - travelline App route Initialized
+[2019-03-18T15:03:45.159] [INFO] [access] - Static path  /Users/chalk/office/personal/MEAN7/remittance7/dist
+[2019-03-18T15:03:45.171] [INFO] [access] - Server running on localhost 8899
+[2019-03-18T15:03:48.914] [INFO] [access] - from /

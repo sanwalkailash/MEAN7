@@ -12,6 +12,7 @@ import { UtilService } from './services/util.service';
 import { TokeninterceptorService } from './services/tokeninterceptor.service';
 import { HttpClientModule }    from '@angular/common/http';
 import { ErrordialogComponent } from './errordialog/errordialog.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ErrordialogComponent } from './errordialog/errordialog.component';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    ErrordialogComponent
+    ErrordialogComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

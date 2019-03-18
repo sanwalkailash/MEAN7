@@ -1,0 +1,25 @@
+{
+    "login": {
+        "SignIn": "サインイン",
+        "SignInMsg": "ログためのユドを入力してください",
+        "UserName": "めのユーザ",
+        "UserNameMsg": "あなたのユーザー名を入力してください",
+        "Password": "ログイン",
+        "PasswordMsg": "あなたのユーザー名を入力",
+        "Submit": "を入力してくださ",
+        "RememberMe": "ユーザー名を入力して"
+    },
+    "footer": {
+        "Privacy": "入力し",
+        "Copyrights": "@2017,名とパスワー"
+    },
+    "messages": {
+        "1": "Oops! ーザー名を入力してく ",
+        "2": "名を入力し..."
+    },
+    "errors":{
+        "0":{"code":0, "message":"Loading...","image":""},
+        "3":{"code":3, "message":"Please check your Internet Connection !","image":"../assets/images/error.jpg"},
+        "4":{"code":4, "message":"Oops! something is not right.","image":"../assets/images/error.jpg"}
+    }
+}
