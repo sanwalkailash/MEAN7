@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, RequestOptions, HttpEvent, HttpResponse,HttpErrorResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
+import {Observable,EMPTY, throwError } from 'rxjs';
+import { map, switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class RestfulService {
 
@@ -21,11 +20,20 @@ export class RestfulService {
         break;
       default:
         console.error('ERROR -- : @api_GET api path not added.');
-        return Observable.throw('api path not added.');
+        return throwError('api path not added.');
     }
     console.log('called api [' + url + ']');
     return this.http.get(url)
-      .catch((error: Response) => Observable.throw(error || 'Server error'));
+      .pipe(
+        map((event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            console.log('event--->>>', event);
+            // this.errorDialogService.openDialog(event);
+          }
+          return event;
+        })
+      )
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error || 'Server error')));
   }
 
   api_DELETE(data, apiPath) {
@@ -38,11 +46,20 @@ export class RestfulService {
         break;
       default:
         console.error('ERROR -- : @api_DELETE api path not added.');
-        return Observable.throw('api path not added.');
+        return throwError('api path not added.');
     }
     console.log('called api [' + url + ']');
     return this.http.delete(url)
-      .catch((error: Response) => Observable.throw(error || 'Server error'));
+      .pipe(
+        map((event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            console.log('event--->>>', event);
+            // this.errorDialogService.openDialog(event);
+          }
+          return event;
+        })
+      )
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error || 'Server error')));
   }
 
   api_PUT(data, apiPath) {
@@ -55,17 +72,23 @@ export class RestfulService {
         break;
       default:
         console.error('ERROR -- : @api_PUT api path not added.');
-        return Observable.throw('api path not added.');
+        return throwError('api path not added.');
     }
     console.log('called api [' + url + ']');
     return this.http.put(url, data)
-      .catch((error: Response) => Observable.throw(error || 'Server error'));
+      .pipe(
+        map((event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            console.log('event--->>>', event);
+            // this.errorDialogService.openDialog(event);
+          }
+          return event;
+        })
+      )
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error || 'Server error')));
   }
 
   api_POST(data, apiPath) {
-
-
-
     console.log('post data ', data);
     console.log('post apiPath ', apiPath);
     let url = environment.API_HOST;
@@ -75,11 +98,20 @@ export class RestfulService {
         break;
       default:
         console.error('ERROR -- : @api_POST api path not added.');
-        return Observable.throw('api path not added.');
+        return throwError('api path not added.');
     }
     console.log('called api [' + url + ']');
     return this.http.post(url, data)
-      .catch((error: Response) => Observable.throw(error || 'Server error'));
+      .pipe(
+        map((event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            console.log('event--->>>', event);
+            // this.errorDialogService.openDialog(event);
+          }
+          return event;
+        })
+      )
+      .pipe(catchError((error: HttpErrorResponse) => throwError(error || 'Server error')));
   }
 
 }

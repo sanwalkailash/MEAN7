@@ -1,10 +1,8 @@
 module.exports = Object.freeze({
   "AppProperties":{
     "appName":"travelLine",
-    "database":"mongodb://127.0.0.1:27017/resourcemanager",
-    "secret":"QwErt!2#4",
-    "tokenLife":1,
-    "resumeUploadFolder":"upload/resumes/"
+    "database":"mongodb://127.0.0.1:27017/dashboard",
+    "secret":">Zh.4j[iv]K7ph?",
   },
   "success":1,
   "failure":0,

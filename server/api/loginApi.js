@@ -6,61 +6,88 @@ const util = require("./Utility")(app, port,environment,server,console,models)
     const fs = require('fs');
 
     return {
-    login:function(req,res)        {
-      console.info("login Invoked");
-      try {
-          let errors = [];
-          if(util.isVoid(req.body.email)){
-              errors.push("Email missing !");
+    login:function( req, res, next ) {
+      var CryptoJS = require("crypto-js");
+      console.log("sign-in callback function Invoked test");
+      var request = require('request');
+      var body = req.body;
+      var username = body.username;
+      var password = body.password;
+      var portalName = body.portalName;
+      var token;
+      var refreshToken;
+      var responseProfile;
+      var loginURL = '';
+
+      // Encrypt
+      var secretKey = '>Zh.4j[iv]K7ph?';
+      var hashedUserData = {};
+      if ( username && password ) {
+        hashedUserData = {
+          email: CryptoJS.AES.encrypt(username, secretKey).toString(),
+          password: CryptoJS.AES.encrypt(password, secretKey).toString()
+        };
+      }
+      console.log("hashedUserData:: ", hashedUserData);
+
+      function callback(error, response, body) {
+        try {
+          if(!error && response.statusCode == 200 ) {
+            var responseData;
+            responseData = body;
+            if (responseData.status == 0) {
+              console.log('the value for host in callback function-> ', host);
+
+              token = responseData.response.token;
+              refreshToken = responseData.response.refreshToken;
+
+              loginData = responseData.response;
+              res.json({
+                "status": appConstants.success,
+                "message": "",
+                "auth_token": token,
+                "loginData" : loginData,
+                "secureUserData": hashedUserData,
+                "refreshToken":refreshToken,
+              });
+            } else {
+              res.json({
+                "status": appConstants.failure,
+                "message": "Invalid Username or Password",
+                "errorcode": responseData.ecode
+              });
+            }
+
+          } else {
+            res.json({
+              "status": appConstants.failure,
+              "message": "Something went wrong",
+              "errorcode": 500
+            });
           }
 
-          if(util.isVoid(req.body.password)){
-                        errors.push("Password missing !");
-                    }
-          if(errors.length>0){
-              res.json({
-                  "status":appConstants.failure,
-                  "errors" : errors
-              });
-          }else {
-               console.info("authonticating user")
-               models.userSchema.findOne(
-                  {
-                    "email":req.body.email,
-                    "password":req.body.password,
-                    "appName":req.body.appName
-                  }
-                  )
-                  .then(user => {
-                      if(util.isVoid(user)){
-                        errors.push("User-Password Not found !");
-                        res.json({
-                              "status":appConstants.failure,
-                              "errors" : errors
-                          });
-                      }else {
-                        tokenApi.generateAuthToken(req,res,user);
-                      }
-                  },
-                  err => {
-                      console.error(err)
-                      errors.push(appConstants.serverError)
-                      errors.push(err)
-                      res.json({
-                                "status":appConstants.failure,
-                                "errors" : errors
-                            });
-                  })
-          }
-      }catch(e) {
-          console.info("caught exception")
-                 console.error(e);
-                 res.json({
-                   "status": appConstants.failure,
-                   "message": e,
-                   "errorcode": 500
-                 });
-               }
+        } catch(e){
+          console.trace(e);
+          res.json({
+            "status":appConstants.failure,
+            "message": e,
+            "errorcode": 500
+          });
+        }
+      }
+
+      var jsonData  = { "username": username, "password": password, "appname" : "GeoAd" }
+      if( !isVoid( portalName ) ) jsonData["portalName"] = portalName;
+
+      loginURL = {
+        url: protocol + host + ":" + self_port + "/bh/login/v1",
+        method: 'post',
+        json: jsonData, //{"username": username, "password": password, "appname" : "GeoAd" ,"portalName" : portalName},
+        headers: {'Content-Type': 'application/json'}
+      };
+      console.log("Login Options", loginURL);
+
+      request(loginURL, callback);
     },
     logout: function(req,res){
       req.user.token = null;
