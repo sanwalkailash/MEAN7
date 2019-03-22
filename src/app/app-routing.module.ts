@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-
+import {environment} from '../environments/environment';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
 import {SigninComponent} from './signin/signin.component';
 
 
-
 const appRoutes: Routes = [
-  { path: 'login', component: SigninComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: environment.ROUTE_LOGIN, component: SigninComponent },
+  { path: environment.ROUTE_HOME, component: HomeComponent },
+  { path: environment.ROUTE_PAGE_NOT_FOUND, component: PageNotFoundComponent },
+  { path: '', redirectTo: environment.ROUTE_LOGIN, pathMatch: 'full' },
+  { path: '**', redirectTo: environment.ROUTE_PAGE_NOT_FOUND, pathMatch: 'full' }
 ];
 
 

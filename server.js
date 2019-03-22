@@ -37,13 +37,13 @@ if (!process.env.PORT) { console.info("PORT :: undefined, using defaults") }
 var environment = process.env.ENV || 'development';
 if (environment === 'production') {
     port = 8899;
-    server_detail = {host:"api.host.me", self_port:7700, protocol:"http://", env:"production", mailerver_host : "mail.host.me", mailerver_host : "8062"}
+    server_detail = {host:"api.pahadi.me", self_port:7700, protocol:"http://", env:"production", mailerver_host : "mail.pahadi.me", mailerver_host : "8062"}
 } else if (environment === 'staging') {
-    port = 8899;
-    server_detail = {host:"api.host.me", self_port:7000, protocol:"http://", env:"staging", mailerver_host : "mail.host.me", mailerver_host : "8041"}
+    port = 8888;
+    server_detail = {host:"api.pahadi.me", self_port:7000, protocol:"http://", env:"staging", mailerver_host : "mail.pahadi.me", mailerver_host : "8041"}
 } else {
-    port = 8899;
-    server_detail = {host:"api.host.me", self_port:6600, protocol:"http://", env:"development", mailerver_host : "mail.host.me", mailerver_host : "8041"}
+    port = 8888;
+    server_detail = {host:"api.pahadi.me", self_port:6600, protocol:"http://", env:"development", mailerver_host : "mail.pahadi.me", mailerver_host : "8041"}
 }
 
 mongoose.Promise = global.Promise;

@@ -1,0 +1,48 @@
+#signin-container {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 82vH;
+  height: calc(100vH - 136px);
+}
+#signin-wrapper{
+  padding: 2em 3em;
+  width: 500px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+#signin-form{
+  margin-top: 1em;
+}
+img#sc-chalk-logo-img{
+  height: 70px;
+}
+.signin-button{
+  border: none;
+  margin-top: 0.5em;
+}
+#forgot-password-container{
+  text-align: left;
+  margin-top: 1em;
+}
+#forgot-password{
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  font-size: 1.1em;
+}
+#forgot-password:hover{
+  text-decoration: underline;
+}
+#forgot-password:focus{
+  text-decoration: none;
+}
+.progress-spinner.mat-progress-spinner /deep/ path{
+  stroke: #fff;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill{
+  background-color: transparent !important;
+}

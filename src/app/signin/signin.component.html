@@ -1,0 +1,53 @@
+<div id="signin-container">
+  <div id="signin-wrapper">
+    <div id="sc-chalk-logo">
+      <img id="sc-chalk-logo-img" src="/assets/logo.png">
+    </div>
+    <div id="signin-form">
+      <form
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off">
+        <mat-form-field
+          class="input-container-full-width"
+          id="signin-email-container">
+          <input
+            matInput
+            type="email"
+            id="signin-email"
+            placeholder="username"
+            formControlName="email">
+        </mat-form-field>
+        <mat-form-field
+          class="input-container-full-width"
+          id="signin-password-container">
+          <input
+            matInput
+            type="password"
+            id="signin-password"
+            placeholder="password"
+            formControlName="password">
+        </mat-form-field>
+        <div class="input-container-full-width" id="submit-button-container">
+          <button
+            mat-raised-button
+            id="signin-submit-button"
+            class="submit-button-full-width signin-button"
+            type="submit"
+            [disabled]="loadSpinner">
+            <p class="submit-button-text" id="signin-button-text" *ngIf="!loadSpinner">
+              "Login"
+            </p>
+            <mat-progress-spinner
+              *ngIf="loadSpinner"
+              id="signin-spinner"
+              class="progress-spinner"
+              [mode]="mode"
+              [value]="value">
+            </mat-progress-spinner>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

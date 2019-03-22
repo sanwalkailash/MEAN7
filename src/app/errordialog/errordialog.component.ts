@@ -8,8 +8,8 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ErrordialogComponent implements OnInit {
 
-  title = 'Angular-Interceptor';
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string) {}
+  title = 'Error';
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {
   }

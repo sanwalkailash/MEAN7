@@ -30,6 +30,8 @@ export class TokeninterceptorService implements HttpInterceptor {
     }
 
     request = request.clone({headers: request.headers.set('Accept', 'application/json')});
+    request = request.clone({headers: request.headers.set('appname', 'Angular7')});
+    request = request.clone({headers: request.headers.set('portalname', 'remittance7')});
 
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {

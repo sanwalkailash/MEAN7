@@ -2,7 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material';
+import { MatFormFieldModule,MatButtonModule,MatDialogModule,MatInputModule, MatTabsModule  } from '@angular/material';
+import { MatButtonToggleModule, MatSliderModule }       from '@angular/material';
+import { MatProgressSpinnerModule }                    from '@angular/material';
+import { MatProgressBarModule }                        from '@angular/material';
+import { MatSelectModule, MatIconModule }               from '@angular/material';
+import { MatRadioModule, MatCheckboxModule }            from '@angular/material';
+import { MatSnackBarModule, MatMenuModule }             from '@angular/material';
+import { MatGridListModule }                           from '@angular/material';
+import { MatAutocompleteModule }                       from '@angular/material';
+import { MatCardModule, MatListModule }                 from '@angular/material';
+import { MatTooltipModule }                            from '@angular/material';
+import { MatChipsModule }                            from '@angular/material';
+
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -15,6 +28,8 @@ import { HttpClientModule,HTTP_INTERCEPTORS }    from '@angular/common/http';
 import { ErrordialogComponent } from './errordialog/errordialog.component';
 import { ErrordialogService } from './errordialog/errordialog.service';
 import { SigninComponent } from './signin/signin.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +37,27 @@ import { SigninComponent } from './signin/signin.component';
     HeaderComponent,
     FooterComponent,
     ErrordialogComponent,
-    SigninComponent
+    SigninComponent,
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
+    MatButtonModule, MatDialogModule,
+    MatInputModule, MatTabsModule, MatAutocompleteModule,
+    MatButtonToggleModule, MatSliderModule,
+    MatProgressSpinnerModule, MatSelectModule, MatProgressBarModule,
+    MatIconModule, MatCheckboxModule,
+    MatRadioModule, MatSnackBarModule, MatTooltipModule,
+    MatGridListModule, MatMenuModule,
+    MatCardModule, MatListModule,MatChipsModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     RestfulService,
