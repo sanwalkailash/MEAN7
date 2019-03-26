@@ -5,9 +5,12 @@ module.exports = function(router, port,environment,server,console,models) {
     console.info("travelline App route Initialized")
     const util = require("./../api/Utility")(router, port,environment,server,console,models)
     const loginApi = require('../api/loginApi')(router, port,environment,server,console,models);
+    const tokenApi = require('./../api/token')(router, port,environment,server,console,models);
 
     // login api
     router.post('/login/v1', loginApi.login);
+    router.post('/register/v1', loginApi.register);
+    router.post('/user/update/v1', loginApi.updateProfile);
     router.post('/refresh/v1', loginApi.refresh);
     // api route setting ends ---
 

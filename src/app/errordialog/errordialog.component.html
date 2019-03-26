@@ -1,11 +1,14 @@
-<div>
+<h2 mat-dialog-title align="center">
   {{title}}
-  <div>
-    <p>
-      Reason: {{data.reason}}
-    </p>
-    <p>
-      Status: {{data.status}}
-    </p>
-  </div>
-</div>
+</h2>
+<mat-dialog-content>
+  <p>
+    Reason: {{data.reason}}
+  </p>
+  <p>
+    Status: {{data.status}}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

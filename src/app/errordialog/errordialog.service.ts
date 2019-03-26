@@ -13,9 +13,7 @@ export class ErrordialogService {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      let animal;
-      animal = result;
+      console.log('The dialog was closed.. result',result);
     });
   }
 }

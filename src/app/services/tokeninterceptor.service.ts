@@ -6,7 +6,7 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpResponse
+  HttpResponse,
 } from '@angular/common/http';
 
 import {Observable} from 'rxjs';
@@ -30,8 +30,8 @@ export class TokeninterceptorService implements HttpInterceptor {
     }
 
     request = request.clone({headers: request.headers.set('Accept', 'application/json')});
-    request = request.clone({headers: request.headers.set('appname', 'Angular7')});
-    request = request.clone({headers: request.headers.set('portalname', 'remittance7')});
+    request = request.clone({headers: request.headers.set('appname', 'Remittance')});
+    request = request.clone({headers: request.headers.set('portalname', 'remittance')});
 
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {

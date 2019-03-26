@@ -96,6 +96,9 @@ export class RestfulService {
       case environment.API_LOGIN:
         url += environment.API_LOGIN;
         break;
+      case environment.API_REGISTER:
+        url += environment.API_REGISTER;
+        break;
       default:
         console.error('ERROR -- : @api_POST api path not added.');
         return throwError('api path not added.');

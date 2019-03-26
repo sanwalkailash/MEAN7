@@ -65,7 +65,7 @@ module.exports = function (app, port,environment,server,console,models) {
                 .then(result => { console.info("dir check done.") })
                 .catch(error => { console.error('caught exception : ', error.message); throw error });
             let base64Data = content.split(';base64,').pop();
-            console.info("base64Data",base64Data);
+            // console.info("base64Data",base64Data);
             fs.writeFile(dir+filename, base64Data,{encoding: 'base64'}, function (err) {
                 if (err) throw err;
                 console.info('file saved!');
