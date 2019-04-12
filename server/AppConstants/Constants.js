@@ -1,7 +1,7 @@
 module.exports = Object.freeze({
   "AppProperties":{
     "appName":"remittance",
-    "database":"mongodb://127.0.0.1:27017/remittance",
+    "database":process.env.NODE_ENV=='production'?"mongodb+srv://demo:demo@cluster0-uemxs.mongodb.net/test?retryWrites=true":"mongodb://127.0.0.1:27017/remittance",
     "secret":"QwErt!2#4",
     "profileFolder":"uploads/profile/"
   },
