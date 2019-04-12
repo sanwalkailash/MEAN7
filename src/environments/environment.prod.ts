@@ -5,7 +5,7 @@
 
 export const environment = {
   production: true,
-  API_HOST:"http://localhost:8899",
+  API_HOST:"http://34.203.42.185:8899",
   API_LOGIN:"/login/v1",
   API_REGISTER: '/register/v1',
 
