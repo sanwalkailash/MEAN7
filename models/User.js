@@ -28,13 +28,13 @@ module.exports = function (connection) {
 
     UserSchema.pre("save", function (next) {
         this.token = util.encrypt(this.appName + "," + this.email + "," + this.password);
-        console.info("@user schema default token..", this.token)
+        console.info("@user save schema default token..", this.token)
         next()
     })
 
     UserSchema.pre("update", function (next) {
         this.token = util.encrypt(this.appName + "," + this.email + "," + this.password);
-        console.info("@user schema default token..", this.token)
+        console.info("@user update schema default token..", this.token)
         next()
     })
 
