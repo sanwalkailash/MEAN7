@@ -33,7 +33,7 @@ module.exports = function (connection) {
     })
 
     UserSchema.pre("update", function (next) {
-        this.token = this.appName + "," + this.email + "," + this.password;
+        this.token = util.encrypt(this.appName + "," + this.email + "," + this.password);
         console.info("@user schema default token..", this.token)
         next()
     })
