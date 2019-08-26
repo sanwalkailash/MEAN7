@@ -8,6 +8,7 @@ import {
   MatDialogModule,
   MatInputModule,
   MatTabsModule ,
+  MatToolbarModule,
   MatButtonToggleModule,
   MatSliderModule,
   MatProgressSpinnerModule ,
@@ -25,7 +26,7 @@ import {
   MatTooltipModule ,
   MatChipsModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
 }                            from '@angular/material';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -43,6 +44,8 @@ import { ErrordialogService } from './errordialog/errordialog.service';
 import { SigninComponent } from './signin/signin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { CalciComponent } from './calci/calci.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { HomeComponent } from './home/home.component';
     ErrordialogComponent,
     SigninComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    CalciComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,7 @@ import { HomeComponent } from './home/home.component';
     MatDialogModule,
     MatInputModule,
     MatTabsModule,
+    MatToolbarModule,
     MatAutocompleteModule,
     MatButtonToggleModule,
     MatSliderModule,
@@ -84,7 +90,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     RestfulService,

@@ -8,7 +8,7 @@ module.exports = function (app, port,environment,server,console,models) {
 
   return {
     register:function(req,res)        {
-      console.info("login Invoked");
+      console.error("login Invoked");
       try {
         let errors = [];
         if(util.isVoid(req.body.email)){
@@ -213,7 +213,7 @@ module.exports = function (app, port,environment,server,console,models) {
       }
     },
     login:function(req,res)        {
-      console.info("login Invoked");
+      console.error("login Invoked");
       try {
         let errors = [];
         if(util.isVoid(req.body.username)){

@@ -3,9 +3,9 @@
 module.exports = function(router, port,environment,server,console,models) {
 
     console.info("travelline App route Initialized")
-    const util = require("./../api/Utility")(router, port,environment,server,console,models)
+    const util = require("../api/Utility")(router, port,environment,server,console,models)
     const loginApi = require('../api/loginApi')(router, port,environment,server,console,models);
-    const tokenApi = require('./../api/token')(router, port,environment,server,console,models);
+    const tokenApi = require('../api/token')(router, port,environment,server,console,models);
 
     // login api
     router.post('/login/v1', loginApi.login);
@@ -22,7 +22,7 @@ module.exports = function(router, port,environment,server,console,models) {
 
     router.get('/api/config', function (req, res) {
         try {
-            var config = require("./../configurations")();
+            var config = require("../../configs/configurations")();
             var appHost = req.headers.host.split(':')[0];
             if (appHost != "localhost") {
                 appHost = req.headers.host.split('.')[0];
@@ -35,7 +35,7 @@ module.exports = function(router, port,environment,server,console,models) {
             if (req.headers.locale) {
                 localeVocab = require("./../resources/" + req.headers.locale + ".json")
             } else {
-                localeVocab = require("./../resources/en.json")
+                localeVocab = require("../resources/en.json.js")
             }
             console.info("host is :: ", appHost);
             var appData = config.appDetails[appHost];
@@ -54,7 +54,7 @@ module.exports = function(router, port,environment,server,console,models) {
             console.info("/getrouteconfigs/");
             var route = req.params.route;
             console.info("current route is", route);
-            var config = require("./../configurations")();
+            var config = require("../../configs/configurations")();
             var appHost = req.headers.host.split(':')[0];
             if (appHost != "localhost") {
                 appHost = req.headers.host.split('.')[0];

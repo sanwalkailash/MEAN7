@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Three log files are defined: log/app.log gets all the log messages and is configured to
 // rotate everyday. log/errors.log uses the logLevelFilter to only get ERROR messages;
 // log/access.log contains only the http request logs, using the connect-logger, and is configured to rotate every day.
-log4js.configure(require("./server/resources/log4js.json"));
+log4js.configure(require("./configs/log4js.json"));
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 var console = log4js.getLogger('[access]');
 
@@ -48,11 +48,11 @@ if (environment === 'production') {
 
 mongoose.Promise = global.Promise;
 var connection = require('./configs/database')(mongoose);
-var models = require('./models/models')(connection);
+var models = require('./db/models')(connection);
 
 // load App routes.
 // 1. travelline routes.
-require('./server/routes/remittance')(app, port,environment,server_detail,console,models); // load our routes and pass in our app and fully configured passport
+require('./backend/routes/remittance')(app, port,environment,server_detail,console,models); // load our routes and pass in our app and fully configured passport
 
 
 
@@ -74,7 +74,7 @@ var corsOptions = {
     origin: '*',
     optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions)); // for allowing cross origin calls
+// app.use(cors(corsOptions)); // for allowing cross origin calls
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
           secret: 'keyboard cat',

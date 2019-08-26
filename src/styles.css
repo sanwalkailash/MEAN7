@@ -30,3 +30,18 @@ mat-form-field{
 .inlineitemes{
   display:inline-flex;
 }
+
+app-footer{
+  position: fixed;
+  border: 10px;
+  /* top: 90%; */
+  bottom: 10px;
+  width: 100vw;
+}
+.mat-tab-body-content {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}

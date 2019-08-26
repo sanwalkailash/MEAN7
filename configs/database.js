@@ -1,6 +1,6 @@
-const appConstants = require('../server/AppConstants/Constants')
+const appConstants = require('../backend/AppConstants/Constants')
 module.exports = function(mongoose) {
-    console.log(appConstants)
+    console.log("@database config..",appConstants)
     var dbURI = appConstants.AppProperties.database;
     var connection = mongoose.createConnection(dbURI,{
                  useNewUrlParser: true,
