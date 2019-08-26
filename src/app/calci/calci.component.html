@@ -1,22 +1,31 @@
 
-<textarea matInput rows="3" style="width: 90%;">
+<textarea matInput rows="5" style="width: 99%;">
 
 </textarea>
-    <table mat-table  class="mat-elevation-z8">
-      <tr mat-header-row>
-        <td>username</td>
-        <td>bill</td>
+<form style="display: grid;">
+        <mat-form-field class="example-full-width">
+            <span matPrefix>My &nbsp;</span>
+            <input type="text" matInput placeholder="Customer">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+      <button mat-raised-button color="primary">
+          SAVE
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </button>
+</form>
+<mat-divider></mat-divider>
+    <table mat-table  class="mat-elevation-z8" style="font-size: 200%;">
+      
+      <tr mat-row >
+        <td>7</td><td>8</td><td>9</td><td> <button mat-raised-button color="primary">DIV</button> </td>
       </tr>
       <tr mat-row >
-        <td>7</td><td>8</td><td>9</td><td> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" ng-click="edit(client)">div</button> </td>
-      </tr>
-      <tr mat-row >
-          <td>4</td><td>5</td><td>6</td><td> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" ng-click="edit(client)">mul</button> </td>
+          <td>4</td><td>5</td><td>6</td><td> <button mat-raised-button color="primary">MUL</button> </td>
         </tr>
         <tr mat-row >
-            <td>1</td><td>2</td><td>3</td><td> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" ng-click="edit(client)">sub</button> </td>
+            <td>1</td><td>2</td><td>3</td><td> <button mat-raised-button color="primary">SUB</button> </td>
           </tr>
           <tr mat-row >
-              <td>0</td><td> . </td><td> = </td><td> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" ng-click="edit(client)">add</button> </td>
+              <td>0</td><td> . </td><td> = </td><td> <button mat-raised-button color="primary">ADD</button> </td>
             </tr>
     </table>
