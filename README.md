@@ -3,6 +3,8 @@ build  : node --max_old_space_size=2048  ./node_modules/.bin/ng build --prod --d
 
 create new service and include in provider 
  ng g s services/restful --module=app
+create new conponent and include in provider 
+ ng g c calci --module=app
 create new route and import in module 
  ng generate module app-routing --flat --module=app
 
