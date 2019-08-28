@@ -16,8 +16,18 @@ module.exports = function(router, port,environment,server,console,models) {
 
     // ui routes setting --
     router.get('/', function (req, res) {
-        console.info("from /")
-        res.render('index');
+        var user = {
+            agent: req.header('user-agent'), // User Agent we get from headers
+            host:req.header('host'),
+            referrer: req.header('referrer'), //  Likewise for referrer
+            ip: req.header('x-forwarded-for') || req.connection.remoteAddress, // Get IP - allow for proxy
+            screen: { // Get screen info that we passed in url post data
+              width: req.param('width'),
+              height: req.param('height')
+            }
+          }
+          console.info("from / client details are [",user,"]");
+          res.render('index');
     })
 
     router.get('/api/config', function (req, res) {

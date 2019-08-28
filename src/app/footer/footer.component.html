@@ -1,5 +1,5 @@
 <mat-divider></mat-divider>
-<mat-tab-group headerPosition="below" mat-stretch-tabs class="mat-elevation-z8">
+<mat-tab-group headerPosition="below" mat-stretch-tabs class="mat-elevation-z8" *ngIf="checkAuth.isLoggedIn()">
   <mat-tab label = "Calci">
     <app-calci></app-calci>
     <mat-divider></mat-divider>

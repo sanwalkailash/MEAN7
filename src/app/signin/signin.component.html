@@ -1,4 +1,4 @@
-<div class="inlineitemes">
+<!-- <div class="inlineitemes">
   <mat-card class="half" align="center">
     <div id="sc-chalk-logo">
       <img id="sc-chalk-logo-img" src="/assets/logo.png">
@@ -91,4 +91,104 @@
       </div>
     </form>
   </mat-card>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mat-card class="half" align="center">
+        <div id="sc-chalk-logo">
+          <img id="sc-chalk-logo-img" src="/assets/logo.png">
+        </div>
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onLoginSubmit()"
+          autocomplete="off">
+          <mat-form-field >
+            <input matInput placeholder="Username" formControlName="email">
+          </mat-form-field>
+          <br/>
+          <mat-form-field >
+            <input matInput placeholder="password" formControlName="password">
+          </mat-form-field>
+          <div class="input-container-full-width" id="submit-button-container">
+            <button
+              mat-raised-button
+              color="primary"
+              id="signin-submit-button"
+              type="submit"
+              [disabled]="loadSpinner">
+              <p id="signin-button-text" *ngIf="!loadSpinner">
+                Login
+              </p>
+              <mat-progress-spinner
+                [diameter]="30"
+                *ngIf="loadSpinner"
+                id="signin-spinner"
+                class="progress-spinner"
+                color="accent"
+                [mode]="mode"
+                [value]="value">
+              </mat-progress-spinner>
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+    <div class="col-sm">
+      <mat-card class="half" align="center">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="onRegisterSubmit()"
+          autocomplete="off">
+          <img style="width:180px;height:auto;" [src]="profilePic.result" alt="Profile" />
+          <br/>
+          <input  placeholder="Upload Profile Pic" type="file" accept="image/*"  (change)=fileEvent($event) >
+          <br/>
+          <mat-form-field >
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+          <br/>
+          <mat-form-field >
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+          <br/>
+          <mat-form-field >
+            <input matInput placeholder="password" formControlName="password">
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <input matInput [matDatepicker]="myDatepicker"  placeholder="dob" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
+          <br/>
+          <mat-form-field >
+            <input matInput placeholder="contact" formControlName="contact">
+          </mat-form-field>
+          <div class="input-container-full-width" id="submit-button-container">
+            <button
+              mat-raised-button
+              color="primary"
+              id="signin-submit-button"
+              type="submit"
+              [disabled]="loadSpinner">
+              <p id="signin-button-text" *ngIf="!loadSpinner">
+                Register
+              </p>
+              <mat-progress-spinner
+                [diameter]="30"
+                *ngIf="loadSpinner"
+                id="signin-spinner"
+                class="progress-spinner"
+                color="accent"
+                [mode]="mode"
+                [value]="value">
+              </mat-progress-spinner>
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
 </div>
