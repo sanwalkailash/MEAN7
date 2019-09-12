@@ -212,6 +212,76 @@ module.exports = function (app, port,environment,server,console,models) {
         });
       }
     },
+    fetchUser:function(req,res)        {
+      console.info("login Invoked");
+      try {
+        let errors = [];
+        if(util.isVoid(req.params.email)){
+          errors.push("Fetching all users for application-- [",req.headers.appname,"]");
+          models.userSchema.find({
+            "appName":req.headers.appname
+          }).then(users => {
+              if(util.isVoid(users)){
+                errors.push("User doesn't exist !");
+                res.json({
+                  "status":appConstants.failure,
+                  "errors" : errors,
+                });
+              }else {
+                res.json({
+                  "status":appConstants.success,
+                  "data" : users
+                });
+              }
+            },
+            err => {
+              console.error(err)
+              errors.push(appConstants.serverError)
+              errors.push(err)
+              res.json({
+                "status":appConstants.failure,
+                "errors" : errors
+              });
+            })
+        }else {
+          models.userSchema.find({
+            // "_id":req.body._id,
+            "email":req.params.email,
+            "appName":req.headers.appname
+          }).then(user => {
+              if(util.isVoid(user)){
+                errors.push("User doesn't exist !");
+                res.json({
+                  "status":appConstants.failure,
+                  "errors" : errors
+                });
+              }else {
+                res.json({
+                  "status":appConstants.success,
+                  "data" : user
+                });
+              }
+            },
+            err => {
+              console.error(err)
+              errors.push(appConstants.serverError)
+              errors.push(err)
+              res.json({
+                "status":appConstants.failure,
+                "errors" : errors
+              });
+            })
+        }
+      }catch(e) {
+        console.info("caught exception")
+        console.error(e);
+        res.json({
+          "status": appConstants.failure,
+          "message": e,
+          "errorcode": 500
+        });
+      }
+    },
     login:function(req,res)        {
       console.error("login Invoked");
       try {

@@ -3,6 +3,7 @@ import {HttpClient, HttpEvent, HttpResponse,HttpErrorResponse} from '@angular/co
 import {environment} from '../../environments/environment';
 import {Observable,EMPTY, throwError } from 'rxjs';
 import { map, switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
+import {User} from '../models/index';
 
 @Injectable()
 
@@ -18,12 +19,15 @@ export class RestfulService {
       case environment.API_HOST:
         url += environment.API_HOST + '?page=' + perameterjson.page + '&id=' + perameterjson.id;
         break;
+      case environment.API_LIST_USER:
+          url += environment.API_LIST_USER + '?page=' + perameterjson.page + '&id=' + perameterjson.id;
+          break;
       default:
         console.error('ERROR -- : @api_GET api path not added.');
         return throwError('api path not added.');
     }
     console.log('called api [' + url + ']');
-    return this.http.get(url)
+    return this.http.get(url,{ observe: 'response' })
       .pipe(
         map((event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
@@ -35,6 +39,17 @@ export class RestfulService {
       )
       .pipe(catchError((error: HttpErrorResponse) => throwError(error || 'Server error')));
   }
+
+  //Requesting a typed response with default angular response object.
+  getUsers(perameterjson, apiPath): Observable<User[]> {
+    return this.http.get<User[]>(environment.API_LIST_USER + '?page=' + perameterjson.page + '&id=' + perameterjson.id)
+  }
+
+  //Requesting a typed response with complete HttpResponse object.
+  getUsersWithHttpResponse(perameterjson, apiPath): Observable<HttpResponse<User[]>> {
+    return this.http.get<User[]>(environment.API_LIST_USER + '?page=' + perameterjson.page + '&id=' + perameterjson.id,{ observe: 'response' })
+  }
+
 
   api_DELETE(data, apiPath) {
     console.log('api_DELETE data ', data);

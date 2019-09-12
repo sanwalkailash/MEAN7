@@ -8,6 +8,7 @@ export const environment = {
   API_HOST:"http://localhost:8899",
   API_LOGIN:"/login/v1",
   API_REGISTER: '/register/v1',
+  API_LIST_USER: '/user/v1/',
 
   ROUTE_LOGIN:"login",
   ROUTE_HOME:"home",

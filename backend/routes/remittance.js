@@ -12,6 +12,8 @@ module.exports = function(router, port,environment,server,console,models) {
     router.post('/register/v1', loginApi.register);
     router.post('/user/update/v1', loginApi.updateProfile);
     router.post('/refresh/v1', loginApi.refresh);
+    router.get('/user/v1/:email', loginApi.fetchUser);
+    router.get('/user/v1/', loginApi.fetchUser);
     // api route setting ends ---
 
     // ui routes setting --

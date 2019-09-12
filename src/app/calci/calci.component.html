@@ -1,30 +1,42 @@
 
-<textarea matInput rows="5" style="width: 99%;">
-
+<textarea matInput rows="5" class="calculator-screen">
+{{calciJSON.resultDisplay}}
 </textarea>
-<form style="display: grid;">
+<mat-divider></mat-divider>
+
+    <table mat-table  class="calculator mat-elevation-z8" style="font-size: 200%;">
+      
+      <tr mat-row >
+        <td matRipple (click)="operation(i)" *ngFor="let i of [7,8,9]">{{i}}</td>
+        <td (click)="operation('/')"><button mat-raised-button color="primary">  &divide; </button> </td>
+      </tr>
+      <tr mat-row >
+          <td matRipple (click)="operation(j)" *ngFor="let j of [4,5,6]">{{j}}</td>
+          <td (click)="operation('x')"><button mat-raised-button color="primary">  &times; </button> </td>
+        </tr>
+        <tr mat-row >
+            <td matRipple (click)="operation(k)" *ngFor="let k of [1,2,3]">{{k}}</td>
+            <td (click)="operation('-')"><button mat-raised-button color="primary"> + </button> </td>
+          </tr>
+          <tr mat-row >
+              <td  matRipple (click)="operation(0)">0</td>
+              <td matRipple (click)="operation('.')"> . </td>
+              <td matRipple (click)="operation('=')"> = </td>
+              <td (click)="operation(' + ')"> <button mat-raised-button color="primary"> - </button> </td>
+            </tr>
+    </table>
+<mat-divider></mat-divider>
+
+<form >
         <mat-form-field class="example-full-width">
             <span matPrefix>SHOP &nbsp;</span>
             <input type="text" matInput placeholder="Customer">
             <mat-icon matSuffix>mode_edit</mat-icon>
           </mat-form-field>
-      <button mat-raised-button color="primary">
-          SAVE TRANSACTION
+      <button (click)="save()" mat-raised-button color="primary">
+          SAVE 
+      </button>
+      <button (click)="clear()" mat-raised-button color="primary">
+        CANCEL
       </button>
 </form>
-<mat-divider></mat-divider>
-    <table mat-table  class="mat-elevation-z8" style="font-size: 200%;">
-      
-      <tr mat-row >
-        <td>7</td><td>8</td><td>9</td><td> <button mat-raised-button color="primary">DIV</button> </td>
-      </tr>
-      <tr mat-row >
-          <td>4</td><td>5</td><td>6</td><td> <button mat-raised-button color="primary">MUL</button> </td>
-        </tr>
-        <tr mat-row >
-            <td>1</td><td>2</td><td>3</td><td> <button mat-raised-button color="primary">SUB</button> </td>
-          </tr>
-          <tr mat-row >
-              <td>0</td><td> . </td><td> = </td><td> <button mat-raised-button color="primary">ADD</button> </td>
-            </tr>
-    </table>
