@@ -12,5 +12,14 @@ export const environment = {
 
   ROUTE_LOGIN:"login",
   ROUTE_HOME:"home",
-  ROUTE_PAGE_NOT_FOUND:"pagenotfound"
+  ROUTE_PAGE_NOT_FOUND:"pagenotfound",
+
+  ERROR_CODES : {
+    "1001":"INVALID USER",
+    "1002":"Please enter valid email.",
+    "1003": "Wrong email and/or password",
+    "1004": "Backend Server Issue",
+    "1005": "Something is not right"
+  },
+  
 };

@@ -7,6 +7,7 @@ import {RestfulService} from '../services/restful.service';
 import {environment} from '../../environments/environment';
 import { Router,ActivatedRoute }  from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {Profile} from '../models/DataTypes'
 
 @Component({
   selector: 'app-signin',
@@ -20,7 +21,7 @@ export class SigninComponent implements OnInit {
   mode:string = 'indeterminate';
   value:number = 50;
   returnUrl:string;
-  profilePic = {
+  profilePic :Profile = {
     "name":"default",
     "type":"",
     "size":"",

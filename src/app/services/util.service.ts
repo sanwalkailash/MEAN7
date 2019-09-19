@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {ErrordialogService} from '../errordialog/errordialog.service';
+import {ErrorDialogData} from '../models/DataTypes'
+import {environment as constants}  from '../../environments/environment'
 
 @Injectable()
 export class UtilService {
-
-  errorMessagesArray = ["Please enter valid email.","Wrong email and/or password","Backend Server Issue","Something is not right"]
 
   constructor(private errorDialogService :ErrordialogService ) { }
 
@@ -14,19 +14,19 @@ export class UtilService {
   }
 
   errorMessage(errorcode:any){
-    let data = {};
-    data = {
-      reason: this.errorMessagesArray[errorcode]+'',
-      status: errorcode
+    let data:ErrorDialogData = {
+      reason: constants[errorcode],
+      status: errorcode,
+      title : "Default"
     };
     this.errorDialogService.openDialog(data);
   }
 
   alertErrors(errors){
-    let data = {};
-    data = {
+    let data:ErrorDialogData = {
       reason: errors,
-      status: 1001
+      status: "1001",
+      title : "Default"
     };
     this.errorDialogService.openDialog(data);
   }

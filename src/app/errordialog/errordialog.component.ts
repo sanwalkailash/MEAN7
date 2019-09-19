@@ -1,5 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material/dialog';
+import {ErrorDialogData} from '../models/DataTypes'
+
 
 @Component({
   selector: 'app-errordialog',
@@ -8,8 +10,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ErrordialogComponent implements OnInit {
 
-  title = 'Error';
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  // title = 'Error';
+  constructor(private dialogRef: MatDialogRef<ErrordialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ErrorDialogData) {}
 
   ngOnInit() {
   }

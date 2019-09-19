@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ErrordialogService} from '../errordialog/errordialog.service';
+import {ErrorDialogData} from '../models/DataTypes';
+
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -42,11 +44,10 @@ export class TokeninterceptorService implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        let data = {};
-        data = {
-          reason: error && error.error.reason ? error.error.reason : '',
-          status: error.status
-        };
+        let data :ErrorDialogData;
+        data.reason =  error && error.error.reason ? error.error.reason : '';
+        data.status = error.status ? "#"+error.status : "Unknown";
+        data.title = "HttpError";
         this.errorDialogService.openDialog(data);
         return Observable.throw(error);
       }));

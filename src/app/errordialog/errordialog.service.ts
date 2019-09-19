@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ErrordialogComponent } from './errordialog.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ErrordialogService {
 
   constructor(public dialog: MatDialog) { }
-  openDialog(data): void {
+  openDialog(data={}): void {
     const dialogRef = this.dialog.open(ErrordialogComponent, {
       width: '300px',
+      disableClose:false,
+      autoFocus:false,
       data: data
     });
 
@@ -17,3 +21,5 @@ export class ErrordialogService {
     });
   }
 }
+
+

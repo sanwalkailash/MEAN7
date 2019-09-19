@@ -10,7 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -61,7 +61,6 @@ import { HistoryComponent } from './history/history.component';
     BrowserModule,
     MatDialogModule,
     MatButtonModule,
-    MatDialogModule,
     MatInputModule,
     MatTabsModule,
     MatToolbarModule,
@@ -94,6 +93,7 @@ import { HistoryComponent } from './history/history.component';
     RestfulService,
     UtilService,
     ErrordialogService,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     { provide: HTTP_INTERCEPTORS, useClass: TokeninterceptorService, multi: true }
   ],
   entryComponents: [ErrordialogComponent],
