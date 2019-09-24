@@ -20,6 +20,7 @@ describe('ErrordialogComponent', () => {
     closeAll: (): void => undefined
   };
 
+  // SETUP
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ErrordialogComponent],
@@ -45,6 +46,7 @@ describe('ErrordialogComponent', () => {
     .compileComponents();
   }));
 
+  // ACTION : TRIGGER CHANGE DETECTION, ETC.
   beforeEach(() => {
     fixture = TestBed.createComponent(ErrordialogComponent);
     component = fixture.componentInstance;
@@ -54,6 +56,7 @@ describe('ErrordialogComponent', () => {
     fixture.detectChanges();
   });
 
+  // OUTCOME
   it('should create', () => {
     expect(component).toBeTruthy();
   });
